@@ -1,0 +1,16 @@
+.heroBox {
+  position: relative !important;
+}
+.heroSlide {
+  min-height: 85vh;
+  background-size: cover;
+  background-position: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: inherit;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  width: 100%;
+}

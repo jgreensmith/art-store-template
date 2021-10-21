@@ -3,7 +3,7 @@ import Head  from 'next/head';
 import { Box, ThemeProvider } from '@mui/system';
 import { Container, CssBaseline, Typography } from '@mui/material';
 import Navbar from './Navbar';
-import { theme } from '../utils/styles';
+import { theme } from '../../utils/styles';
 
 const Layout = ({ children, commercePublicKey, title, }) => {
     return (
@@ -20,9 +20,9 @@ const Layout = ({ children, commercePublicKey, title, }) => {
             <ThemeProvider theme={theme}>
                 <CssBaseline />
                 <Navbar />
-                <Container component="main" sx={{ padding: '1rem' }}>
+                {/* <Container component="main" sx={{ padding: '1rem' }}> */}
                     {children}
-                </Container>
+                {/* </Container> */}
                 <Container maxWidth="md" component="footer">
                     <Box mt={5}>
                         <Typography variant="body2" color="textSecondary" align="center">
