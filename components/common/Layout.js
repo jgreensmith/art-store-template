@@ -5,7 +5,7 @@ import { Container, CssBaseline, Typography } from '@mui/material';
 import Navbar from './Navbar';
 import { theme } from '../../utils/styles';
 
-const Layout = ({ children, commercePublicKey, title, }) => {
+const Layout = ({ children, commercePublicKey, title }) => {
     return (
         <React.Fragment>
             <Head>
@@ -20,9 +20,7 @@ const Layout = ({ children, commercePublicKey, title, }) => {
             <ThemeProvider theme={theme}>
                 <CssBaseline />
                 <Navbar />
-                {/* <Container component="main" sx={{ padding: '1rem' }}> */}
-                    {children}
-                {/* </Container> */}
+                {children}
                 <Container maxWidth="md" component="footer">
                     <Box mt={5}>
                         <Typography variant="body2" color="textSecondary" align="center">

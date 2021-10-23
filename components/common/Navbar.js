@@ -111,7 +111,7 @@ const Navbar = (props) => {
                             ))}
                         </List>
                         <Tooltip title="View Cart">
-                            <IconButton sx={{  }}>
+                            <IconButton >
                                 <ShoppingCartIcon sx={{ color: 'primary.text' }} />
                             </IconButton>
                         </Tooltip>
