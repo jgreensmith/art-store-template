@@ -1,7 +1,7 @@
 import React from 'react';
 import Head  from 'next/head';
 import { Box, ThemeProvider } from '@mui/system';
-import { Container, CssBaseline, Typography } from '@mui/material';
+import { Container, CssBaseline, Toolbar, Typography } from '@mui/material';
 import Navbar from './Navbar';
 import { theme } from '../../utils/styles';
 
@@ -20,6 +20,7 @@ const Layout = ({ children, commercePublicKey, title }) => {
             <ThemeProvider theme={theme}>
                 <CssBaseline />
                 <Navbar />
+                <Toolbar />
                 {children}
                 <Container maxWidth="md" component="footer">
                     <Box mt={5}>
