@@ -3,18 +3,15 @@ import { Box } from "@mui/system";
 import SaveIcon from '@mui/icons-material/Save';
 import { useState } from "react";
 
-
-const actions = [
-    { icon: <SaveIcon />, name: 'Copy' },
-    { icon: <SaveIcon />, name: 'Save' },
-    { icon: <SaveIcon />, name: 'Print' },
-    { icon: <SaveIcon />, name: 'Share' },
-  ];
   
-export default function SpeedDialTooltipOpen() {
+export default function SpeedDialTooltipOpen({ allCategories, filter }) {
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+    const handleClick = (e) => {
+      setOpen(false);
+    }
+    
   
     return (
       
@@ -26,13 +23,14 @@ export default function SpeedDialTooltipOpen() {
           onOpen={handleOpen}
           open={open}
         >
-          {actions.map((action) => (
+          {allCategories.map((cat, i) => (
             <SpeedDialAction
-              key={action.name}
-              icon={action.icon}
-              tooltipTitle={action.name}
+              key={i}
+              icon={<SaveIcon />}
+              tooltipTitle={cat}
               tooltipOpen
-              onClick={handleClose}
+              onClick={() => filter(cat)}
+              
             />
           ))}
         </SpeedDial>
