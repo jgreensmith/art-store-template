@@ -1,4 +1,4 @@
-import { SpeedDial, SpeedDialAction, SpeedDialIcon } from "@mui/material";
+import { Button, SpeedDial, SpeedDialAction, SpeedDialIcon } from "@mui/material";
 import { Box } from "@mui/system";
 import SaveIcon from '@mui/icons-material/Save';
 import { useState } from "react";
@@ -17,23 +17,41 @@ export default function SpeedDialTooltipOpen({ allCategories, filter }) {
       
         <SpeedDial
           ariaLabel="SpeedDial tooltip example"
-          sx={{ position: 'fixed', bottom: 16, right: 16 }}
+          sx={{ 
+            position: 'fixed', 
+            bottom: 16, 
+            right: 16,
+            
+          }}
           icon={<SpeedDialIcon />}
           onClose={handleClose}
           onOpen={handleOpen}
           open={open}
         >
-          {allCategories.map((cat, i) => (
-            <SpeedDialAction
-              key={i}
-              icon={<SaveIcon />}
-              tooltipTitle={cat}
+          {allCategories.map((obj) => (
+           
+           <SpeedDialAction
+              key={obj.name}
+              icon={<img style={{ width: '30px', height: '30px' }} src={obj.img}/>}
+              tooltipTitle={obj.name}
               tooltipOpen
-              onClick={() => filter(cat)}
+              onClick={() => filter(obj.name)}
               
             />
+            
           ))}
         </SpeedDial>
       
     );
 }
+
+
+
+{/* <SpeedDialAction
+              key={i}
+              icon={<SaveIcon/>}
+              tooltipTitle={cat}
+              tooltipOpen
+              onClick={() => filter(cat)}
+              
+            /> */}

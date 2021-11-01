@@ -58,6 +58,15 @@ export const MainButton = styled(Button)({
   textTransform: 'none',
 
 });
+export const FilterButton = styled(Button)({
+  
+  fontSize: '1.8rem',
+  ":hover": { 
+    background: 'none'
+  },
+  textTransform: 'none',
+
+});
 
 export const CustomSlide = styled('div')({
   minHeight: '85vh',
