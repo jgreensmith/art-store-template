@@ -12,9 +12,13 @@ import getCommerce from '../../utils/commerce';
 export default function Shop(props) {
   const { products, categories } = props;
 
-  //const allCategories = ['All', ...new Set(categories.map((category) => category.name))];
-  const allCategories = [{"name": 'All'}, ...new Set(categories.map((category) => ({ "name": category.name, "img": category.assets[0].url })))];
-
+  const allCategories = [{"name": 'All'}, ...new Set(categories.map((category) => (
+    { 
+      "name": category.name, 
+      "img": category.assets[0].url 
+    }
+  )))];
+  //map over categories API and list in array of objects with 'all'
 
   console.log(allCategories)
 
@@ -29,11 +33,13 @@ export default function Shop(props) {
     setProductList(filteredData);
   }
 
+  //match category button (allCategories) to product categories and filter
+
 
   return (
     <Layout title="Shop" commercePublicKey={props.commercePublicKey} >
       {products.length === 0 && alert("no products")}
-      {/* <CategoryFilter allCategories={allCategories} filter={filter} /> */}
+      <CategoryFilter allCategories={allCategories} filter={filter} />
           <Grid container spacing={1}>
             {productList.map((product) => (
               <Grid key={product.id} item md={3}>
@@ -62,8 +68,3 @@ export async function getStaticProps() {
     },
   };
 }
-
-
-// const allCategories = ['All', ...new Set(categories.map((category) => category.name))];
-
-//const allCategories = [{"name": 'All'}, ...new Set(categories.map((category) => ({ "name": category.name, "img": category.assets[0].url })))];

@@ -1,17 +1,13 @@
-import { Button, SpeedDial, SpeedDialAction, SpeedDialIcon } from "@mui/material";
-import { Box } from "@mui/system";
-import SaveIcon from '@mui/icons-material/Save';
+import { Button, ListItemSecondaryAction, SpeedDial, SpeedDialAction, SpeedDialIcon } from "@mui/material";
+import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import { useState } from "react";
+import filterSvg from "../svg/filterSvg";
 
   
 export default function SpeedDialTooltipOpen({ allCategories, filter }) {
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
-    const handleClick = (e) => {
-      setOpen(false);
-    }
-    
   
     return (
       
@@ -20,9 +16,9 @@ export default function SpeedDialTooltipOpen({ allCategories, filter }) {
           sx={{ 
             position: 'fixed', 
             bottom: 16, 
-            right: 16,
-            
+            right: 16, 
           }}
+          FabProps={{color: 'secondary'}}
           icon={<SpeedDialIcon />}
           onClose={handleClose}
           onOpen={handleOpen}

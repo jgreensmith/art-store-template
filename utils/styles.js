@@ -1,4 +1,4 @@
-import { Button } from '@mui/material';
+import { Button, Card } from '@mui/material';
 import { createTheme, styled } from '@mui/material/styles';
 import { Box } from '@mui/system';
 
@@ -46,7 +46,7 @@ export const theme = createTheme({
       lg: 1200,
       xl: 1536,
     },
-  }
+  },
 });
 
 export const MainButton = styled(Button)({
@@ -58,15 +58,22 @@ export const MainButton = styled(Button)({
   textTransform: 'none',
 
 });
-export const FilterButton = styled(Button)({
+export const FilterButton = styled(Button)(({ theme }) => ({
   
   fontSize: '1.8rem',
-  ":hover": { 
-    background: 'none'
-  },
+  color: theme.palette.primary.text,
   textTransform: 'none',
+  backgroundSize: 'cover',
+  backgroundPosition: 'center center !important',
 
-});
+}));
+export const FilterCard = styled(Card)(({ theme }) => ({
+  
+  ":hover": {
+    display: 'none',
+  }
+
+}));
 
 export const CustomSlide = styled('div')({
   minHeight: '85vh',

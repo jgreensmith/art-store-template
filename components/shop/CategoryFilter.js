@@ -1,25 +1,11 @@
-import { AppBar, CssBaseline, Slide, Toolbar, useScrollTrigger } from '@mui/material';
+import { AppBar, Card, CssBaseline, Slide, Toolbar, useScrollTrigger } from '@mui/material';
 import React from 'react';
-import { FilterButton } from '../../utils/styles';
-
-function HideOnScroll(props) {
-    const { children, window } = props;
-    // Note that you normally won't need to set the window ref as useScrollTrigger
-    // will default to window.
-    // This is only being set here because the demo is in an iframe.
-    const trigger = useScrollTrigger({
-        target: window ? window() : undefined,
-    });
-
-    return (
-        <Slide appear={false} direction="down" in={!trigger}>
-            {children}
-        </Slide>
-    );
-}
+import { FilterButton, FilterCard } from '../../utils/styles';
 
 
-export default function CategoryFilter({ allCategories, filter }, props) {
+
+
+export default function CategoryFilter({ allCategories, filter }) {
     return (
         <React.Fragment>
             <CssBaseline />
@@ -30,13 +16,19 @@ export default function CategoryFilter({ allCategories, filter }, props) {
                         justifyContent: 'space-between',
                     }}
                 >
-                    {allCategories.map((cat, i) => (
+                    {allCategories.map((obj) => (
                         <FilterButton 
-                            key={i}
-                            onClick={() => filter(cat)}
+                            key={obj.name}
+                            onClick={() => filter(obj.name)}
+                            style={{  
+                                backgroundImage: `url("${obj.img}")`    
+                            }} 
                         >
-                            {cat}
+                            <FilterCard >
+                                {obj.name}
+                            </FilterCard>
                         </FilterButton>
+                        
                     ))}
                 </Toolbar>
             
