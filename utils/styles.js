@@ -47,6 +47,7 @@ export const theme = createTheme({
       xl: 1536,
     },
   },
+ 
 });
 
 export const MainButton = styled(Button)({
@@ -65,25 +66,36 @@ export const FilterButton = styled(Button)(({ theme }) => ({
   textTransform: 'none',
   backgroundSize: 'cover',
   backgroundPosition: 'center center !important',
-
+  width: '135px',
+  boxSizing: 'border-box',
+  position: 'relative',
 }));
-export const FilterCard = styled(Card)(({ theme }) => ({
+
+export const FilterBox = styled(Box)(({ theme }) => ({
   
+  background: theme.palette.secondary.main,
   ":hover": {
-    display: 'none',
-  }
-
+    background: 'inherit',
+  },
+  width: 135,
+  height: 62,
+  boxSizing: 'border-box',
+  position: 'absolute',
+  boxShadow: theme.shadows[10],
+  borderRadius: 7,
+  border: '3px solid black',
+ 
 }));
 
-export const CustomSlide = styled('div')({
-  minHeight: '85vh',
-  backgroundSize: 'cover',
-  backgroundPosition: 'center',
-  display: 'flex',
-  justifyContent: 'center',
-  flexDirection: 'column',
-  fontcolor: '#fff',
-  width: '100%',
-  zIndex: 1
+// export const CustomSlide = styled('div')({
+//   minHeight: '85vh',
+//   backgroundSize: 'cover',
+//   backgroundPosition: 'center',
+//   display: 'flex',
+//   justifyContent: 'center',
+//   flexDirection: 'column',
+//   fontcolor: '#fff',
+//   width: '100%',
+//   zIndex: 1
 
-});
+// });
