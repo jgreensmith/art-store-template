@@ -41,6 +41,7 @@ export const theme = createTheme({
   breakpoints: {
     values: {
       xs: 0,
+      vs: 500,
       sm: 680,
       md: 900,
       lg: 1200,
@@ -81,9 +82,9 @@ export const FilterBox = styled(Box)(({ theme }) => ({
   height: 62,
   boxSizing: 'border-box',
   position: 'absolute',
-  boxShadow: theme.shadows[10],
+  boxShadow: theme.shadows[12],
   borderRadius: 7,
-  border: '3px solid black',
+  border: '2px solid black',
  
 }));
 
