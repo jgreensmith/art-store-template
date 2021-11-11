@@ -6,9 +6,7 @@ import { Box } from '@mui/system';
 
 const ProductCard = ({ permalink, image, name, price }) => {
     return (
-        <Slide direction="up" in={true}>
-            <Card>
-                <Link href={`/product/${permalink}`} passHref>
+        
                     <CardActionArea>
                         <CardMedia
                             component="img"
@@ -35,9 +33,7 @@ const ProductCard = ({ permalink, image, name, price }) => {
                             </Box>
                         </CardContent>
                     </CardActionArea>
-                </Link>
-            </Card>
-        </Slide>
+                
         
     )
 }
