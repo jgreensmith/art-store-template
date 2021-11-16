@@ -60,9 +60,22 @@ export const MainButton = styled(Button)({
   textTransform: 'none',
 
 });
+
+export const ThumbnailButton = styled(Button)(({ theme }) => ({
+  height: '56px',
+  width: '48px',
+  mb: 3,
+  ":hover": { 
+    border: '2px solid'
+  },
+  boxShadow: theme.shadows[2], 
+  boxSizing: 'border-box',
+}));
+
 export const StyledImg = styled("img")({
   width: '100%',
 });
+
 export const FilterButton = styled(Button)(({ theme }) => ({
   
   fontSize: '1.8rem',

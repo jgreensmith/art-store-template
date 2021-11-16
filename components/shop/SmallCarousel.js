@@ -1,22 +1,21 @@
 import { Button, Container } from '@mui/material';
 import React from 'react';
+import { ThumbnailButton } from '../../utils/styles';
 
 const SmallCarousel = ({images}) => {
     return (
-        <Container sx={{ display: { xs: 'none', sm: 'block' } }} >
+        <React.Fragment>
             {Array.isArray(images) && (images.map((image, i) => (
-                <Button 
+                <ThumbnailButton 
                     key={i}
                     sx={{
                         background: `url("${image}") center center/cover`,
-                        height: '56px',
-                        width: '48px',
-                        mb: 3,
+                        display: { xs: 'none', sm: 'block' },
                     }}
                     
                 />
             )))}
-        </Container>
+        </React.Fragment>
     )
 }
 

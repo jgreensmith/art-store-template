@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { Box } from '@mui/system';
 
 
-const ProductCard = ({ permalink, image, name, price }) => {
+const ProductCard = ({ image, name, price }) => {
     return (
         
                     <CardActionArea>
