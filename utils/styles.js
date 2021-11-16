@@ -60,6 +60,9 @@ export const MainButton = styled(Button)({
   textTransform: 'none',
 
 });
+export const StyledImg = styled("img")({
+  width: '100%',
+});
 export const FilterButton = styled(Button)(({ theme }) => ({
   
   fontSize: '1.8rem',
