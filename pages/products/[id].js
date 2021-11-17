@@ -1,5 +1,5 @@
 import { Container, Grid, Grow, Toolbar } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import Layout from "../../components/common/Layout";
 import ProductDescription from "../../components/shop/ProductDescription";
 import SmallCarousel from "../../components/shop/SmallCarousel";
@@ -9,6 +9,7 @@ import { StyledImg } from "../../utils/styles";
 
 export default function Product(props) {
     const { product } = props;
+
     //console.log( {product} );
 
     const reduceProductImages = product => {
@@ -55,7 +56,12 @@ export default function Product(props) {
                         </Grow>
                     </Grid>
                     <Grid item xs={12} sm={4}>
-                      <ProductDescription name={product.name} description={product.description} />  
+                        <ProductDescription 
+                            name={product.name} 
+                            description={product.description}
+                            price={product.price.formatted_with_symbol} 
+                            inventory={product.inventory.available}
+                        />  
                     </Grid>
 
                 </Grid>
