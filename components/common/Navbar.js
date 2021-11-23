@@ -96,6 +96,8 @@ const Navbar = (props) => {
         fetchCart();
     }, []);
 
+    //update cart icon, props passed down from layout
+
 
     return (
         <React.Fragment>

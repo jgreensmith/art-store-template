@@ -1,6 +1,8 @@
 import React, { createContext, useReducer } from 'react';
 import { CART_RETRIEVE_REQUEST, CART_RETRIEVE_SUCCESS } from './constants';
 
+//store handles the state of the cart, and uses context hook to provide state to app
+
 export const Store = createContext();
 
 function reducer(state, action) {
