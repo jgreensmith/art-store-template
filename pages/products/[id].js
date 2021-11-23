@@ -1,4 +1,5 @@
 import { Container, Grid, Grow, Toolbar } from "@mui/material";
+import { Box } from "@mui/system";
 import React, { useState } from "react";
 import Layout from "../../components/common/Layout";
 import ProductDescription from "../../components/shop/ProductDescription";
@@ -59,22 +60,24 @@ export default function Product(props) {
                     </Grid>
                     <Grid item xs={12} sm={7}>
                         <Grow in>
-                            <Container maxWidth="sm" sx={{ display: 'flex', overflowY: 'scroll' }} >
+                            <Container maxWidth="sm" >
                                 <StyledImg
                                     src={mainImage}
                                     alt={product.name}
                                     className="main-image-id"
                                     sx={{ display: { xs: 'none', sm: 'block' } }}
                                 /> 
-                                {Array.isArray(images) && (images.map((image, i) => (
-                                    <StyledImg
-                                        key={i}
-                                        src={image}
-                                        alt={product.name}
-                                        className="main-image-id"
-                                        sx={{ display: { xs: 'block', sm: 'none' }, marginRight: 5 }}
-                                    />  
-                                )))} 
+                                <Box sx={{ display: { xs: 'flex', sm: 'none' }, overflowX: 'scroll' }} >
+                                    {Array.isArray(images) && (images.map((image, i) => (
+                                        <StyledImg
+                                            key={i}
+                                            src={image}
+                                            alt={product.name}
+                                            className="main-image-id"
+                                            sx={{ marginRight: 5 }}
+                                        />  
+                                    )))} 
+                                </Box>
                             </Container>
                         </Grow>
                     </Grid>
