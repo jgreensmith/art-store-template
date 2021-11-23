@@ -2,13 +2,15 @@ import { Container, Grid, Grow, Toolbar } from "@mui/material";
 import React, { useState } from "react";
 import Layout from "../../components/common/Layout";
 import ProductDescription from "../../components/shop/ProductDescription";
-import SmallCarousel from "../../components/shop/SmallCarousel";
 import getCommerce from "../../utils/commerce";
-import { StyledImg } from "../../utils/styles";
+import { StyledImg, ThumbnailButton } from "../../utils/styles";
 
 
 export default function Product(props) {
     const { product } = props;
+    const [mainImage, setMainImage] = useState(product.image.url);
+
+    //set main img src from image thumbnails with default state from product props.
 
     //console.log( {product} );
 
@@ -34,24 +36,45 @@ export default function Product(props) {
     };
 
     const images = reduceProductImages(product);
+
+    const onClickImage = (img) => {
+        setMainImage(img);
+    }
     return (
         <Layout title={product.name} commercePublicKey={props.commercePublicKey}>
             <Toolbar />
             <Container maxWidth="xl">
                 <Grid container justifyContent="space-between" spacing={3}>
                     <Grid item xs={12} sm={1}>
-                        <SmallCarousel images={images} />
+                        {Array.isArray(images) && (images.map((image, i) => (
+                            <ThumbnailButton 
+                                key={i}
+                                sx={{
+                                    background: `url("${image}") center center/cover`,
+                                    display: { xs: 'none', sm: 'block' },
+                                }}
+                                onClick={ () => onClickImage(image)} 
+                            />
+                        )))}
                     </Grid>
                     <Grid item xs={12} sm={7}>
                         <Grow in>
-                            <Container maxWidth="sm" >
+                            <Container maxWidth="sm" sx={{ display: 'flex', overflowY: 'scroll' }} >
+                                <StyledImg
+                                    src={mainImage}
+                                    alt={product.name}
+                                    className="main-image-id"
+                                    sx={{ display: { xs: 'none', sm: 'block' } }}
+                                /> 
                                 {Array.isArray(images) && (images.map((image, i) => (
                                     <StyledImg
                                         key={i}
                                         src={image}
                                         alt={product.name}
-                                    />
-                                )))}
+                                        className="main-image-id"
+                                        sx={{ display: { xs: 'block', sm: 'none' }, marginRight: 5 }}
+                                    />  
+                                )))} 
                             </Container>
                         </Grow>
                     </Grid>

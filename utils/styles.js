@@ -64,7 +64,7 @@ export const MainButton = styled(Button)({
 export const ThumbnailButton = styled(Button)(({ theme }) => ({
   height: '56px',
   width: '48px',
-  mb: 3,
+  marginBottom: 3,
   ":hover": { 
     border: '2px solid'
   },

@@ -49,26 +49,24 @@ const ProductDescription = ({name, description, price, inventory}) => {
                 {inventory > 0 && (
                     <>
                         <ListItem>
-                            
-                                <FormControl fullWidth>
-                                    <InputLabel>Quantity</InputLabel>
-                                    <Select
-                                        labelId="quanitity-label"
-                                        label="Quantity"
-                                        id="quanitity"
-                                        fullWidth
-                                        onChange={(e) => setQuantity(e.target.value)}
-                                        value={quantity}
-                                        inputProps={{MenuProps: {disableScrollLock: true}}}
-                                    >
-                                        {[...Array(inventory).keys()].map((x) => (
-                                            <MenuItem key={x + 1} value={x + 1}>
-                                                {x + 1}
-                                            </MenuItem>
-                                        ))}
-                                    </Select>
-                                </FormControl>
-                                
+                            <FormControl fullWidth>
+                                <InputLabel>Quantity</InputLabel>
+                                <Select
+                                    labelId="quanitity-label"
+                                    label="Quantity"
+                                    id="quanitity"
+                                    fullWidth
+                                    onChange={(e) => setQuantity(e.target.value)}
+                                    value={quantity}
+                                    inputProps={{MenuProps: {disableScrollLock: true}}}
+                                >
+                                    {[...Array(inventory).keys()].map((x) => (
+                                        <MenuItem key={x + 1} value={x + 1}>
+                                            {x + 1}
+                                        </MenuItem>
+                                    ))}
+                                </Select>
+                            </FormControl>     
                         </ListItem>
                         <ListItem>
                         <Button
