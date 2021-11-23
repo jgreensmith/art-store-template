@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Head  from 'next/head';
 import { Box, ThemeProvider } from '@mui/system';
 import { Container, CssBaseline, Toolbar, Typography } from '@mui/material';
 import Navbar from './Navbar';
 import { theme } from '../../utils/styles';
+import { Store } from '../../utils/Store';
 
 const Layout = ({ children, commercePublicKey, title }) => {
+
     return (
         <React.Fragment>
             <Head>
@@ -19,7 +21,7 @@ const Layout = ({ children, commercePublicKey, title }) => {
             </Head>
             <ThemeProvider theme={theme}>
                 <CssBaseline />
-                <Navbar />
+                <Navbar commercePublicKey={commercePublicKey} />
                 <Toolbar />
                 {children}
                 <Container maxWidth="md" component="footer">

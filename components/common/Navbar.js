@@ -1,12 +1,15 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import NextLink from 'next/link';
 import {
     AppBar,
+    Badge,
     Button,
+    CircularProgress,
     CssBaseline,
     Divider,
     Drawer,
     IconButton,
+    Link,
     List,
     ListItem,
     ListItemButton,
@@ -21,6 +24,9 @@ import MenuIcon from '@mui/icons-material/Menu';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { Box } from '@mui/system';
 import { MainButton } from '../../utils/styles';
+import { CART_RETRIEVE_REQUEST, CART_RETRIEVE_SUCCESS } from '../../utils/constants';
+import getCommerce from '../../utils/commerce';
+import { Store } from '../../utils/Store';
 
 
 function HideOnScroll(props) {
@@ -45,7 +51,7 @@ const drawerWidth = 240;
 
 const Navbar = (props) => {
 
-    const { window } = props;
+    const { window, commercePublicKey } = props;
     const [mobileOpen, setMobileOpen] = useState(false);
 
     const handleDrawerToggle = () => {
@@ -76,6 +82,19 @@ const Navbar = (props) => {
     );
 
     const container = window !== undefined ? () => window().document.body : undefined;
+
+    const { state, dispatch } = useContext(Store);
+    const { cart } = state;
+
+    useEffect(() => {
+        const fetchCart = async () => {
+            const commerce = getCommerce(commercePublicKey);
+            dispatch({ type: CART_RETRIEVE_REQUEST });
+            const cartData = await commerce.cart.retrieve();
+            dispatch({ type: CART_RETRIEVE_SUCCESS, payload: cartData });
+        };
+        fetchCart();
+    }, []);
 
 
     return (
@@ -110,11 +129,33 @@ const Navbar = (props) => {
                                 </NextLink>
                             ))}
                         </List>
-                        <Tooltip title="View Cart">
-                            <IconButton >
-                                <ShoppingCartIcon sx={{ color: 'primary.text' }} />
-                            </IconButton>
-                        </Tooltip>
+                        <NextLink href="/cart">
+                                <Link 
+                                        variant="button"
+                                        color="textPrimary"
+                                        href="/cart"
+                                        sx={{ margin: '1rem' }}      
+                                >
+                                    {cart.loading ? (
+                                        <CircularProgress />
+                                    ) : cart.data.total_items > 0 ? (
+                                        <Badge badgeContent={cart.data.total_items} color='primary'>
+                                            <Tooltip title="View Cart">
+                                                <IconButton >
+                                                    <ShoppingCartIcon sx={{ color: 'primary.text' }} />
+                                                </IconButton>
+                                            </Tooltip>
+                                        </Badge>   
+                                    ) : (
+                                        <Tooltip title="View Cart">
+                                            <IconButton >
+                                                <ShoppingCartIcon sx={{ color: 'primary.text' }} />
+                                            </IconButton>
+                                        </Tooltip>
+                                    )}
+                                </Link>
+                            </NextLink>
+                        
 
                     </Toolbar>
                 </AppBar>

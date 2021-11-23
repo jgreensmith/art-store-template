@@ -87,6 +87,8 @@ export default function Product(props) {
                             description={product.description}
                             price={product.price.formatted_with_symbol} 
                             inventory={product.inventory.available}
+                            commercePublicKey={props.commercePublicKey}
+                            product={product}
                         />  
                     </Grid>
 

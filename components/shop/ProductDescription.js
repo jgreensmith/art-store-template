@@ -1,11 +1,33 @@
 import { Card, List, ListItem, Paper, Typography, Grid, Alert, Select, MenuItem, Button, FormControl, InputLabel } from '@mui/material';
 import { Box } from '@mui/system';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import getCommerce from '../../utils/commerce';
+import { CART_RETRIEVE_SUCCESS } from '../../utils/constants';
+import { Store } from '../../utils/Store';
+import  Router  from 'next/router';
 
-const ProductDescription = ({name, description, price, inventory}) => {
+const ProductDescription = ({name, description, price, inventory, commercePublicKey, product}) => {
     const [quantity, setQuantity] = useState(1);
-    const addToCartHandler = () => {
+    const { state, dispatch } = useContext(Store);
+    const { cart } = state;
+    console.log(cart);
 
+    const addToCartHandler = async () => {
+        const commerce = getCommerce(commercePublicKey);
+        const lineItem = cart.data.line_items.find(
+            (x) => x.product_id === product.id
+        );
+        if (lineItem) {
+            const cartData = await commerce.cart.update(lineItem.id, {
+                quantity: quantity,
+            });
+            dispatch({ type: CART_RETRIEVE_SUCCESS, payload: cartData.cart });
+            //Router.push('/cart');
+        } else {
+            const cartData = await commerce.cart.add(product.id, quantity);
+            dispatch({ type: CART_RETRIEVE_SUCCESS, payload: cartData.cart });
+            //Router.push('/cart');
+        }
     }
 
     return (

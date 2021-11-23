@@ -4,6 +4,7 @@ import Router from 'next/router';
 
 import 'nprogress/nprogress.css';
 import { useEffect } from 'react';
+import { StoreProvider } from '../utils/Store';
 
 Router.events.on('routeChangeStart', () => NProgress.start());
 Router.events.on('routeChangeComplete', () => NProgress.done());
@@ -17,7 +18,11 @@ function MyApp({ Component, pageProps }) {
       jssStyles.parentElement.removeChild(jssStyles);
     }
   }, []);
-  return <Component {...pageProps} />
+  return (
+    <StoreProvider>
+      <Component {...pageProps} />
+    </StoreProvider>
+  );
 }
 
 export default MyApp
