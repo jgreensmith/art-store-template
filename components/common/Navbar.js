@@ -47,16 +47,21 @@ function HideOnScroll(props) {
 
 
 
-const drawerWidth = 240;
+const drawerWidth = 250;
 
 const Navbar = (props) => {
 
     const { window, commercePublicKey } = props;
     const [mobileOpen, setMobileOpen] = useState(false);
+    const [cartOpen, setCartOpen] = useState(false);
 
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
     };
+
+    const handleCartToggle = () => {
+        setCartOpen(!cartOpen);
+    }
 
     const links = {
         about: "About",
@@ -80,6 +85,14 @@ const Navbar = (props) => {
             </List>
         </div>
     );
+
+    const cartDrawer = (
+        <div>
+            <Toolbar />
+            <Divider />
+            <h1>phatty cart</h1>
+        </div>
+    )
 
     const container = window !== undefined ? () => window().document.body : undefined;
 
@@ -131,32 +144,36 @@ const Navbar = (props) => {
                                 </NextLink>
                             ))}
                         </List>
-                        <NextLink href="/cart">
+                        {/* <NextLink href="/cart">
                                 <Link 
                                         variant="button"
                                         color="textPrimary"
                                         href="/cart"
                                         sx={{ margin: '1rem' }}      
-                                >
+                                > */}
                                     {cart.loading ? (
                                         <CircularProgress />
                                     ) : cart.data.total_items > 0 ? (
                                         <Badge badgeContent={cart.data.total_items} color='primary'>
                                             <Tooltip title="View Cart">
-                                                <IconButton >
+                                                <IconButton                         
+                                                    onClick={handleCartToggle}
+                                                >
                                                     <ShoppingCartIcon sx={{ color: 'primary.text' }} />
                                                 </IconButton>
                                             </Tooltip>
                                         </Badge>   
                                     ) : (
                                         <Tooltip title="View Cart">
-                                            <IconButton >
+                                            <IconButton                         
+                                                onClick={handleCartToggle}
+                                            >
                                                 <ShoppingCartIcon sx={{ color: 'primary.text' }} />
                                             </IconButton>
                                         </Tooltip>
                                     )}
-                                </Link>
-                            </NextLink>
+                                {/* </Link>
+                        </NextLink> */}
                         
 
                     </Toolbar>
@@ -182,6 +199,28 @@ const Navbar = (props) => {
                     }}
                 >
                     {drawer}
+                </Drawer>
+            </Box>
+            <Box
+                component="nav"
+                sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
+                aria-label="mailbox folders"
+            >
+                {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
+                <Drawer
+                    anchor='right'
+                    variant="temporary"
+                    open={cartOpen}
+                    onClose={handleCartToggle}
+                    ModalProps={{
+                        keepMounted: true, // Better open performance on mobile.
+                    }}
+                    sx={{
+                        display: { xs: 'block'},
+                        '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+                    }}
+                >
+                    {cartDrawer}
                 </Drawer>
             </Box>
         </React.Fragment>
