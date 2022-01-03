@@ -27,6 +27,7 @@ import { MainButton } from '../../utils/styles';
 import { CART_RETRIEVE_REQUEST, CART_RETRIEVE_SUCCESS } from '../../utils/constants';
 import getCommerce from '../../utils/commerce';
 import { Store } from '../../utils/Store';
+import Cart from '../shop/Cart';
 
 
 function HideOnScroll(props) {
@@ -48,6 +49,7 @@ function HideOnScroll(props) {
 
 
 const drawerWidth = 250;
+const cartWidth = 500;
 
 const Navbar = (props) => {
 
@@ -85,19 +87,14 @@ const Navbar = (props) => {
             </List>
         </div>
     );
-
-    const cartDrawer = (
-        <div>
-            <Toolbar />
-            <Divider />
-            <h1>phatty cart</h1>
-        </div>
-    )
+    
 
     const container = window !== undefined ? () => window().document.body : undefined;
 
     const { state, dispatch } = useContext(Store);
     const { cart } = state;
+
+    console.log(cart.data?.line_items);
 
     useEffect(() => {
         const fetchCart = async () => {
@@ -203,7 +200,7 @@ const Navbar = (props) => {
             </Box>
             <Box
                 component="nav"
-                sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
+                sx={{ width: { xs: '80%', sm: cartWidth }, flexShrink: { sm: 0 } }}
                 aria-label="mailbox folders"
             >
                 {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
@@ -217,10 +214,10 @@ const Navbar = (props) => {
                     }}
                     sx={{
                         display: { xs: 'block'},
-                        '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+                        '& .MuiDrawer-paper': { boxSizing: 'border-box', width: { xs: '80%', sm: cartWidth } },
                     }}
                 >
-                    {cartDrawer}
+                    <Cart cart={cart}/>
                 </Drawer>
             </Box>
         </React.Fragment>
