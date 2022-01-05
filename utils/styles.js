@@ -75,6 +75,11 @@ export const ThumbnailButton = styled(Button)(({ theme }) => ({
 export const StyledImg = styled("img")({
   width: '100%',
 });
+export const CartImg = styled("img")({
+  maxWidth: '80px',
+  //minHeight: '100%',
+
+});
 
 export const FilterButton = styled(Button)(({ theme }) => ({
   
