@@ -214,10 +214,13 @@ const Navbar = (props) => {
                     }}
                     sx={{
                         display: { xs: 'block'},
-                        '& .MuiDrawer-paper': { boxSizing: 'border-box', width: { xs: '80%', sm: cartWidth } },
+                        '& .MuiDrawer-paper': { boxSizing: 'border-box', width: { xs: '100%', vs: '80%', sm: cartWidth } },
                     }}
                 >
-                    <Cart cart={cart}/>
+                    <Cart 
+                        cart={cart}
+                        handleCartToggle={handleCartToggle}
+                    />
                 </Drawer>
             </Box>
         </React.Fragment>
