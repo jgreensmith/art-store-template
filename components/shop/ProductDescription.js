@@ -14,7 +14,7 @@ const ProductDescription = ({name, description, price, inventory, commercePublic
 
     const addToCartHandler = async () => {
         const commerce = getCommerce(commercePublicKey);
-        const lineItem = cart.data.line_items.find(
+        const lineItem = cart.data?.line_items.find(
             (x) => x.product_id === product.id
         );
         if (lineItem) {

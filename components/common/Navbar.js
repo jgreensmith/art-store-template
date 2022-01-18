@@ -63,7 +63,13 @@ const Navbar = (props) => {
 
     const handleCartToggle = () => {
         setCartOpen(!cartOpen);
+        lockScroll();
     }
+    const lockScroll = () => {
+        document.body.classList.toggle('lock-scroll');
+    }
+    //adds overflow: hidden to body 
+    
 
     const links = {
         about: "About",
@@ -211,6 +217,7 @@ const Navbar = (props) => {
                     onClose={handleCartToggle}
                     ModalProps={{
                         keepMounted: true, // Better open performance on mobile.
+                        disableScrollLock: true,
                     }}
                     sx={{
                         display: { xs: 'block'},
