@@ -20,18 +20,24 @@ const Layout = ({ children, commercePublicKey, title }) => {
             </Head>
             <ThemeProvider theme={theme}>
                 <CssBaseline />
-                <Navbar commercePublicKey={commercePublicKey} />
-                <Toolbar />
-                {children}
-                <Container maxWidth="md" component="footer">
-                    <Box mt={5}>
-                        <Typography variant="body2" color="textSecondary" align="center">
-                            {'© '}
-                            DuttyShop 2021
-                            {'.'}
-                        </Typography>
-                    </Box>
-                </Container>
+                {/* <Container maxWidth="100%" disableGutters={true} sx={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }} > */}
+
+                    <Navbar commercePublicKey={commercePublicKey} />
+                    <Toolbar />
+                        {children}
+                    
+                    <Container maxWidth="100%" component="footer" 
+                        sx={{ backgroundColor: 'background.dark' }}
+                    >
+                        <Box p={4}  >
+                            <Typography variant="body2" color="background.default" align="center">
+                                {'© '}
+                                DuttyShop 2021
+                                {'.'}
+                            </Typography>
+                        </Box>
+                    </Container>
+                {/* </Container > */}
 
             </ThemeProvider>
         </React.Fragment>

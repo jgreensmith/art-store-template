@@ -30,12 +30,14 @@ export const theme = createTheme({
     },
     secondary: {
       main: '#208080',
+      dark: '#283593'
     },
     error: {
       main: '#f04000',
     },
     background: {
       default: '#ffffff',
+      dark: '#021d37'
     },
   },
   breakpoints: {

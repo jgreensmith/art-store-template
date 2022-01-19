@@ -8,6 +8,7 @@ import getCommerce from '../../utils/commerce';
 import { CART_RETRIEVE_SUCCESS } from '../../utils/constants';
 import NextLink from 'next/link';
 import { Box } from '@mui/system';
+import Router from 'next/router';
 
 
 function Cart(props) {
@@ -22,7 +23,7 @@ function Cart(props) {
     };
 
     const procceedToCheckoutHandler = () => {
-
+        Router.push('/checkout');
     }
 
     return (
@@ -35,7 +36,7 @@ function Cart(props) {
                 </IconButton>
             </Toolbar>
             <Divider />
-            <TableContainer component={Paper} sx={{ maxHeight: 'calc(100vh - 340px)', overflowY: 'auto', paddingBottom: 1 }}>
+            <TableContainer component={Paper} sx={{ maxHeight: 'calc(100vh - 240px)', overflowY: 'auto', paddingBottom: 1 }}>
                 <Table >
                     <TableBody >
                         {cart.data?.line_items.map((cartItem) => (
@@ -80,7 +81,7 @@ function Cart(props) {
                 
             
             
-                <Paper sx={{ position: 'absolute', bottom: 0, right: 0, left: 0, padding: '100px 30px' }} elevation={3}>
+                <Paper sx={{ position: 'absolute', bottom: 0, right: 0, left: 0, padding: '50px 30px' }} elevation={3}>
                     
                     <Grid container spacing={2}>
                         <Grid item xs={12}>
