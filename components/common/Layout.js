@@ -20,9 +20,9 @@ const Layout = ({ children, commercePublicKey, title }) => {
             </Head>
             <ThemeProvider theme={theme}>
                 <CssBaseline />
-                {/* <Container maxWidth="100%" disableGutters={true} sx={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }} > */}
 
-                    <Navbar commercePublicKey={commercePublicKey} />
+                <Navbar commercePublicKey={commercePublicKey} />
+                <Container maxWidth="100%" disableGutters={true} sx={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }} >
                     <Toolbar />
                         {children}
                     
@@ -37,7 +37,7 @@ const Layout = ({ children, commercePublicKey, title }) => {
                             </Typography>
                         </Box>
                     </Container>
-                {/* </Container > */}
+                </Container >
 
             </ThemeProvider>
         </React.Fragment>

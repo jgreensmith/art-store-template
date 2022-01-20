@@ -1,5 +1,6 @@
 import { Container, Grid, Paper, Toolbar, Typography } from "@mui/material";
 import Layout from "../components/common/Layout";
+import UnstyledButtonCustom from "../components/svg/ButtonSvg";
 import { ProfileImg } from "../utils/styles";
 
 
@@ -37,6 +38,7 @@ export default function About(props) {
               <Typography variant='h1'>
                 Full Name
               </Typography>
+              <UnstyledButtonCustom />
               <Typography variant='body1'>
                 There are many variations of passages of Lorem Ipsum available, 
                 but the majority have suffered alteration in some form, by injected humour, 

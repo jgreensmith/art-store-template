@@ -2,12 +2,13 @@ import React from 'react';
 import { Autoplay, EffectFade, Swiper as SwiperCore } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import Link from 'next/link';
-import { Container } from '@mui/material';
+import { Button, Container } from '@mui/material';
 import { CustomSlide } from '../utils/styles';
 import { Box } from '@mui/system';
 
 import styles from '../styles/Hero.module.css';
 import 'swiper/css';
+import UnstyledButtonCustom from './svg/ButtonSvg';
 
 const params = {
   slidesPerView: 1,
@@ -43,11 +44,9 @@ export default function Hero() {
                                 backgroundImage: `url("${image}")`
                             }} 
                         >
-                          <h1>BUTT</h1>
-                          <h1>BUTT</h1>
-                          <h1>BUTT</h1>
-                          <h1>BUTT</h1>
-                          <h1>BUTT</h1>
+                          <Button variant='outlined' size='large' sx={{ p: '10px 100px' }}  > Link 1</Button>
+                          <UnstyledButtonCustom />
+                          
                         </div>
                     </SwiperSlide>
                 ))}
