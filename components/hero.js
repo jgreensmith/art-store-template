@@ -2,7 +2,7 @@ import React from 'react';
 import { Autoplay, EffectFade, Swiper as SwiperCore } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import Link from 'next/link';
-import { Button, Container } from '@mui/material';
+import { Button, Container, Paper, Stack } from '@mui/material';
 import { CustomSlide } from '../utils/styles';
 import { Box } from '@mui/system';
 
@@ -11,7 +11,7 @@ import 'swiper/css';
 import UnstyledButtonCustom from './svg/ButtonSvg';
 
 const params = {
-  slidesPerView: 1,
+  slidesPerView: 'auto',
   watchOverflow: false,
   autoplay: {
     delay: 5000
@@ -36,16 +36,27 @@ export default function Hero() {
     return (
         <div className={styles.heroBox}>
             <Swiper {...params}>
-                {images.map((image) => (
-                    <SwiperSlide key={image}>
+                {images.map((image, index) => (
+                    <SwiperSlide key={index}>
                         <div 
-                            className={styles.heroSlide}
-                            style={{
-                                backgroundImage: `url("${image}")`
-                            }} 
+                          className={styles.heroSlide}
+                          style={{
+                              backgroundImage: `url("${image}")`
+                          }} 
                         >
-                          <Button variant='outlined' size='large' sx={{ p: '10px 100px' }}  > Link 1</Button>
-                          <UnstyledButtonCustom />
+                          {/* <Button variant='outlined' size='large' sx={{ p: '10px 100px' }}  > Link 1</Button> */}
+                          {/* <Box sx={{width: '300px', height: '100px', display: 'flex', justifyContent: 'space-around', backgroundColor: '#fff'}}>
+                            
+                                <UnstyledButtonCustom sx={{zIndex: '2'}}  />
+                          </Box> */}
+                          
+                          {/* <Stack spacing={2}>
+                              <Paper >
+                              </Paper>
+                              <Paper >
+                                <UnstyledButtonCustom />
+                              </Paper>
+                            </Stack> */}
                           
                         </div>
                     </SwiperSlide>

@@ -52,7 +52,7 @@ const ProductDescription = ({name, description, price, inventory, commercePublic
                                 fontSize: "1.7rem", 
                                 }}
                             >
-                                {price}
+                              £{price}
                             </Typography>
                         </Grid>
                         <Grid item xs={6}>
